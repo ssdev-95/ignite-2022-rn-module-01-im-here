@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
-import {
-  View,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	FlatList
-} from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native'
 
 import { Card } from '../../components/card'
 import { Divider } from '../../components/divider'
@@ -24,7 +18,7 @@ export type Participant = {
 
 export function Home() {
   const [eventName, setEventName] = useState('')
-	const [participants, setParticipants] = useState<Participant[]>([])
+  const [participants, setParticipants] = useState<Participant[]>([])
   const [participant, setParticipant] = useState('')
 
   function handleRemoveParticipant(id: string) {
@@ -61,48 +55,51 @@ export function Home() {
     setParticipant(text)
   }
 
-	function handleAddEvent(event:string) {
-	  setEventName(event)
-	}
+  function handleAddEvent(event: string) {
+    setEventName(event)
+  }
 
   return (
-		<>
-    <View style={styles.container}>
-      <Text style={styles.eventName}>
-			  {!!eventName ? eventName: 'Event Name'}
-			</Text>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.eventName}>
+          {eventName ? eventName : 'Event Name'}
+        </Text>
 
-      <Text style={styles.eventDate}>On Sun. 31, 2022 at 5pm</Text>
+        <Text style={styles.eventDate}>On Sun. 31, 2022 at 5pm</Text>
 
-      <View style={styles.inputWrapper}>
-        <TextInput
-          placeholder="Participant name"
-          placeholderTextColor={colors.lightGray}
-          style={styles.input}
-          onChangeText={handleChange}
-          defaultValue={participant}
+        <View style={styles.inputWrapper}>
+          <TextInput
+            placeholder="Participant name"
+            placeholderTextColor={colors.lightGray}
+            style={styles.input}
+            onChangeText={handleChange}
+            defaultValue={participant}
+          />
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={handleAddParticipant}
+          >
+            <Text style={styles.buttonText}>+</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.title}>Participants</Text>
+
+        <Divider />
+
+        <FlatList
+          data={participants}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <Card participant={item} pressHandler={handleRemoveParticipant} />
+          )}
+          keyExtractor={(item) => item.id}
+          ItemSeparatorComponent={Divider}
         />
-
-        <TouchableOpacity style={styles.button} onPress={handleAddParticipant}>
-          <Text style={styles.buttonText}>+</Text>
-        </TouchableOpacity>
       </View>
-
-      <Text style={styles.title}>Participants</Text>
-
-      <Divider />
-
-      <FlatList
-        data={participants}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-          <Card participant={item} pressHandler={handleRemoveParticipant} />
-        )}
-        keyExtractor={(item) => item.id}
-        ItemSeparatorComponent={Divider}
-      />
-    </View>
-		  <Modal onSubmit={handleAddEvent} />
-		</>
+      <Modal onSubmit={handleAddEvent} />
+    </>
   )
 }
