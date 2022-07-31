@@ -1,10 +1,18 @@
 import { useState } from 'react'
 import { v4 as uuid } from 'uuid'
 
-import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native'
+import {
+  View,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	FlatList
+} from 'react-native'
 
 import { Card } from '../../components/card'
 import { Divider } from '../../components/divider'
+import { Modal } from '../../components/modal'
+
 import { toastMe } from '../../utils/toast-me'
 import { styles } from './styles'
 import { colors } from '../../../assets/colors'
@@ -15,7 +23,8 @@ export type Participant = {
 }
 
 export function Home() {
-  const [participants, setParticipants] = useState<Participant[]>([])
+  const [eventName, setEventName] = useState('')
+	const [participants, setParticipants] = useState<Participant[]>([])
   const [participant, setParticipant] = useState('')
 
   function handleRemoveParticipant(id: string) {
@@ -31,7 +40,7 @@ export function Home() {
     toastMe('Success')
   }
 
-  function handleAddEvent() {
+  function handleAddParticipant() {
     if (!participant) {
       toastMe('Couldn`t add participant', 'Fail')
 
@@ -52,9 +61,16 @@ export function Home() {
     setParticipant(text)
   }
 
+	function handleAddEvent(event:string) {
+	  setEventName(event)
+	}
+
   return (
+		<>
     <View style={styles.container}>
-      <Text style={styles.eventName}>Event Name</Text>
+      <Text style={styles.eventName}>
+			  {!!eventName ? eventName: 'Event Name'}
+			</Text>
 
       <Text style={styles.eventDate}>On Sun. 31, 2022 at 5pm</Text>
 
@@ -67,7 +83,7 @@ export function Home() {
           defaultValue={participant}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleAddEvent}>
+        <TouchableOpacity style={styles.button} onPress={handleAddParticipant}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
@@ -86,5 +102,7 @@ export function Home() {
         ItemSeparatorComponent={Divider}
       />
     </View>
+		  <Modal onSubmit={handleAddEvent} />
+		</>
   )
 }

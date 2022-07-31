@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
   },
   eventName: {
     color: colors.white,
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
   },
   title: {
