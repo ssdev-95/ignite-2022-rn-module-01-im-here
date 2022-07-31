@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import * as uid from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 import { View, Text, TextInput, TouchableOpacity, FlatList } from 'react-native'
 
@@ -41,8 +41,7 @@ export function Home() {
       ...prev,
       {
         name: participant,
-        id: `${Date.now()}-${participant.toLowerCase().split(' ').join('_')}`,
-        //id: uid()
+        id: uuid(),
       },
     ])
     setParticipant('')

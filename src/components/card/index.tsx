@@ -17,7 +17,7 @@ export function Card({ participant, pressHandler }: CardProps) {
     <View style={styles.wrapper}>
       <Text style={styles.participantName}>{participant.name}</Text>
       <TouchableOpacity style={styles.button} onPress={handlePress}>
-        <Text style={styles.buttonText}>+</Text>
+        <Text style={styles.buttonText}>-</Text>
       </TouchableOpacity>
     </View>
   )
