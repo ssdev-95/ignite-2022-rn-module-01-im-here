@@ -7,6 +7,7 @@ import { Card } from '../../components/card'
 import { Divider } from '../../components/divider'
 import { toastMe } from '../../utils/toast-me'
 import { styles } from './styles'
+import { colors } from '../../../assets/colors'
 
 export type Participant = {
   name: string
@@ -21,7 +22,7 @@ export function Home() {
     const filtered = participants.filter((item) => item.id !== id)
 
     if (filtered.length === participants.length) {
-      toastMe("Couldn't remove participant", 'Fail')
+      toastMe('Couldn`t remove participant', 'Fail')
 
       return
     }
@@ -32,7 +33,7 @@ export function Home() {
 
   function handleAddEvent() {
     if (!participant) {
-      toastMe("Couldn't add participant", 'Fail')
+      toastMe('Couldn`t add participant', 'Fail')
 
       return
     }
@@ -61,7 +62,7 @@ export function Home() {
       <View style={styles.inputWrapper}>
         <TextInput
           placeholder="Participant name"
-          placeholderTextColor="#a7a7a7"
+          placeholderTextColor={colors.lightGray}
           style={styles.input}
           onChangeText={handleChange}
           defaultValue={participant}

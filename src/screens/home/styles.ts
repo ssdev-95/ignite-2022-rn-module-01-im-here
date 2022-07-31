@@ -1,32 +1,33 @@
 import { StyleSheet } from 'react-native'
+import { colors } from '../../../assets/colors'
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#03000D',
+    backgroundColor: colors.deepBlue,
     paddingVertical: 48,
     paddingHorizontal: 24,
   },
   eventName: {
-    color: '#f0f2f5',
+    color: colors.white,
     fontSize: 24,
     fontWeight: 'bold',
   },
   title: {
     marginTop: 12,
     marginBottom: 24,
-    color: '#f0f2f5',
+    color: colors.white,
     fontSize: 24,
     fontWeight: 'bold',
   },
   eventDate: {
-    color: '#8b8b8b',
+    color: colors.lightGray,
     fontSize: 12,
   },
   input: {
-    backgroundColor: '#454545',
+    backgroundColor: colors.lightGray,
     borderRadius: 5,
-    color: '#f0f2f5',
+    color: colors.white,
     height: 42,
     paddingHorizontal: 10,
     flex: 1,
@@ -34,7 +35,7 @@ export const styles = StyleSheet.create({
   button: {
     width: 42,
     height: 42,
-    backgroundColor: '#53d493',
+    backgroundColor: colors.green,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,
@@ -43,7 +44,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#f0f2f5',
+    color: colors.white,
     marginTop: -4,
   },
   inputWrapper: {

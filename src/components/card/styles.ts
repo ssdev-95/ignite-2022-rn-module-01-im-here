@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { colors } from '../../../assets/colors'
 
 export const styles = StyleSheet.create({
   wrapper: {
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
     height: 54,
     width: 411,
     maxWidth: '100%',
-    backgroundColor: '#1f1f1f',
+    backgroundColor: colors.gray,
     borderRadius: 5,
     overflow: 'hidden',
     alignItems: 'center',
@@ -14,14 +15,14 @@ export const styles = StyleSheet.create({
   },
   participantName: {
     flex: 1,
-    color: '#a7a7a7',
+    color: colors.white,
     paddingStart: 12,
     textAlign: 'left',
   },
   button: {
     width: 54,
     height: 54,
-    backgroundColor: 'red',
+    backgroundColor: colors.red,
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 10,
@@ -29,7 +30,7 @@ export const styles = StyleSheet.create({
   buttonText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#f0f2f5',
+    color: colors.white,
     marginTop: -4,
   },
 })
