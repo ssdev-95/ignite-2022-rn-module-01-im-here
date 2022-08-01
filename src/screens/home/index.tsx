@@ -36,10 +36,21 @@ export function Home() {
 
   function handleAddParticipant() {
     if (!participant) {
-      toastMe('Couldn`t add participant', 'Fail')
-
-      return
+		  return toastMe(
+			  'Couldn`t add participant',
+				'Fail'
+			)
     }
+
+		if(!!participants.some(
+		  person => person.name === participant
+		)) {
+		  return toastMe(
+			  'Participant already in the event!',
+				'Already in'
+			)
+		}
+	
     setParticipants((prev) => [
       ...prev,
       {

@@ -1,4 +1,9 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import {
+  Alert,
+	Text,
+	TouchableOpacity,
+	View
+} from 'react-native'
 import { styles } from './styles'
 
 import { Participant } from '../../screens/home'
@@ -10,7 +15,17 @@ type CardProps = {
 
 export function Card({ participant, pressHandler }: CardProps) {
   function handlePress() {
-    pressHandler(participant.id)
+	  Alert.alert(
+		  'Remove',
+			`Really remove ${participant.name} from event?`,
+			[{
+			  text: 'CONFIRM',
+				onPress: () => pressHandler(participant.id)
+		  }, {
+			  text: 'DISMISS',
+				style: 'cancel'
+			}]
+		)
   }
 
   return (
